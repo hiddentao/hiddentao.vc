@@ -118,7 +118,7 @@ module.exports = {
         setup: ({ query: { site: { siteMetadata: { title, description, siteUrl } } } }) => ({
           title,
           description,
-          feed_url: 'http://feedpress.me/hiddentao.vc',
+          feed_url: 'http://feedpress.me/hiddentao-ventures',
           site_url: siteUrl,
           managingEditor: 'Ramesh Nair',
           webMaster: 'Ramesh Nair',

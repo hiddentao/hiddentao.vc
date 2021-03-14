@@ -62,7 +62,7 @@ export const AngelListLink = ({ children, noText }) => (
 )
 
 export const FeedLink = ({ children, noText }) => (
-  <a href="http://feedpress.me/hiddentao.vc">
+  <a href="http://feedpress.me/hiddentao-ventures">
     {children || (
       <SocialLink title='RSS'>
         <Icon name={['fas', 'rss']} /><Text noText={noText}>RSS</Text>
