@@ -122,7 +122,7 @@ module.exports = {
           site_url: siteUrl,
           managingEditor: 'Ramesh Nair',
           webMaster: 'Ramesh Nair',
-          copyright: 'Copyright HiddenTao Ventures. All Rights Reserved.',
+          copyright: 'Copyright HiddenTao Ltd. All Rights Reserved.',
         }),
         feeds: [
           {
