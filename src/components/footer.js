@@ -49,7 +49,7 @@ const Footer = ({ navLinks }) => (
       <StyledSocialLinks noText={true} />
     </Social>
     <Copyright>
-      © Hiddentao Ltd
+      © Hiddentao Ventures
     </Copyright>
 </Container>
 )

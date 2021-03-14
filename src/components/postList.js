@@ -6,13 +6,11 @@ import { flex } from 'emotion-styled-utils'
 import { formatDate } from "../utils/date"
 
 const Container = styled.div`
-  font-size: 1rem;
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    font-size: 1.1rem;
-  }
-
   ul {
+    ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
+      font-size: 1.1em;
+    }
+
     list-style: none;
     display: block;
     padding: 0;

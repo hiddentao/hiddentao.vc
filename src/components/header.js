@@ -49,9 +49,12 @@ const NavItem = styled.li`
   display: inline-block;
   font-size: 1rem;
 
+  a {
+    border: 1px solid black;
+  }
+
   ${({ theme, selected }) => childAnchors({
     ...theme.header.nav.anchor,
-    inHoverState: selected,
     extraStyles: `
       padding: 1em;
       border-radius: 5px;

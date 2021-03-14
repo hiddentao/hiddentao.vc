@@ -17,6 +17,10 @@ const YearContainer = styled.div`
   }
 `
 
+const StyledPostList = styled(PostList)`
+  font-size: 1.3rem;
+`
+
 const Page = ({ intl, lang, data }) => {
   // sort blog post and categorize by year
   const postsByYear = useMemo(() => {
@@ -58,8 +62,7 @@ const Page = ({ intl, lang, data }) => {
       <h1>Blog</h1>
       {postsByYear.map(( { year, posts }) => (
         <YearContainer key={year}>
-          <h3>{year}</h3>
-          <PostList posts={posts} />
+          <StyledPostList posts={posts} />
         </YearContainer>
       ))}
     </Layout>

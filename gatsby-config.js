@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://hiddentao.vc',
     title: `Hiddentao Ventures`,
-    description: `Hiddentao Ventures focuses on early-stage investments in the technology sector.`,
+    description: `Hiddentao Ventures invests in the technology sector, with a focus on early-stage startups and blockchain.`,
     author: `@hiddentao`,
     defaultLanguage,
     supportedLanguages,
@@ -170,6 +170,13 @@ module.exports = {
       options: {
         policy: [{ userAgent: '*', allow: '/' }]
       }
-    }
+    },
+    // disqus
+    {
+        resolve: `gatsby-plugin-disqus`,
+        options: {
+          shortname: `hiddentao-vc`
+        }
+    },
   ],
 }

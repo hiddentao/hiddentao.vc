@@ -54,36 +54,36 @@ export default {
   header: {
     nav: {
       anchor: {
-        textColor: white,
+        textColor: black,
         borderColor: transparent,
         hoverTextColor: black,
-        hoverBgColor: white,
-        hoverBorderColor: white,
+        hoverBgColor: transparent,
+        hoverBorderColor: black,
       },
       mobileButton: {
         bgColor: transparent,
-        textColor: white,
-        borderColor: transparent,
-        hoverBgColor: white,
+        textColor: black,
+        borderColor: black,
+        hoverBgColor: transparent,
         hoverTextColor: black,
         hoverBorderColor: transparent,
         shadowColor,
       },
     },
     mobileNav: {
-      bgColor: caribbeanGreen,
-      hoverBgColor: Color(caribbeanGreen).darken(0.2).hex(),
-      borderColor: Color(caribbeanGreen).lighten(0.2).hex(),
+      bgColor: orangeYellowCrayola,
+      hoverBgColor: Color(orangeYellowCrayola).darken(0.2).hex(),
+      borderColor: Color(orangeYellowCrayola).lighten(0.2).hex(),
       shadowColor,
     },
     floating: {
       wrapper: {
-        bgColor: opacify(caribbeanGreen, 0.9),
+        bgColor: opacify(orangeYellowCrayola, 0.9),
         shadowColor,
       },
     },
     wrapper: {
-      bgColor: opacify(caribbeanGreen, 0),
+      bgColor: opacify(orangeYellowCrayola, 0),
     },
   },
   splash: {
@@ -108,7 +108,7 @@ export default {
     textColor,
   },
   lastUpdatedDate: {
-    textColor: Color(lightGrey).darken(0.2).hex(),
+    textColor: Color(blueNcs).darken(0.2).hex(),
     warning: {
       textColor: orangeYellowCrayola,
     },

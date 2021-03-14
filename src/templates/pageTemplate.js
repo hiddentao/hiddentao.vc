@@ -4,10 +4,9 @@ import { Location } from '@reach/router'
 import React, { useMemo } from "react"
 import { graphql } from "gatsby"
 import { IntlContextConsumer, Link } from "gatsby-plugin-intl"
-import { DiscussionEmbed } from "disqus-react"
+import { Disqus } from 'gatsby-plugin-disqus'
 
 import { getResolvedVersionForLanguage } from '../utils/node'
-import { calculateReadTimeInMinutes } from '../utils/string'
 import Layout from "../components/layout"
 import Language from "../components/language"
 import PageLastUpdatedDate from "../components/pageLastUpdatedDate"
@@ -19,18 +18,10 @@ const StyledPageLastUpdatedDate = styled(PageLastUpdatedDate)`
   margin: 1rem 0 0;
 `
 
-const PostReadTime = styled.p`
-  margin: 0.8rem 0 0;
-  font-size: 1rem;
-  font-style: italic;
-  color: ${({ theme }) => theme.readTime.textColor};
-`
-
 const StyledMarkdown = styled(Markdown)`
   font-size: 1.4rem;
   background-color: ${({ theme }) => theme.contentSection.bgColor};
   color: ${({ theme }) => theme.contentSection.textColor};
-  padding: 1rem;
   border-radius: 5px;
   margin-top: 2.5rem;
 
@@ -48,7 +39,11 @@ const StyledLanguage = styled(Language)`
 `
 
 const Comments = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 4.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+  }
 `
 
 const BottomNav = styled.div`
@@ -129,9 +124,6 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
       <SEO title={fields.title} description={summary} />
       <Heading>{fields.title}</Heading>
       <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
-      {type === 'blog' ? (
-        <PostReadTime>({calculateReadTimeInMinutes(fields.markdown)} minute read)</PostReadTime>
-      ) : null}
       {versions.length > 1 ? (
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null}
@@ -139,11 +131,16 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
       {type === 'blog' ? <PageBottomNav {...nav} /> : null}
       {type === 'blog' ? (
         <Comments>
+          <h2>Comments</h2>
           <Location>
             {({ location }) => (
-              <DiscussionEmbed shortname='hiddentao' config={{
-                url: `${siteUrl}${location.pathname}`
-              }} />
+              <Disqus
+                config={{
+                  url: `${siteUrl}${location.pathname}`,
+                  identifier: location.pathname,
+                  title: fields.title,
+                }}
+              />
             )}
           </Location>
         </Comments>
