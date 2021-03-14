@@ -52,7 +52,6 @@
     "unified": "^8.3.2"
   },
   "devDependencies": {
-    "now": "^17.0.4",
     "prettier": "^1.17.0"
   },
   "keywords": [
@@ -65,10 +64,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run dev",
     "serve": "gatsby serve",
-    "deploy": "npm run now -- --confirm --prod -f && npm run now -- rm hiddentao-com-live --safe --yes",
     "ping-google": "curl http://www.google.com/ping?sitemap=https://hiddentao.vc/sitemap.xml",
-    "now": "now --token $NOW_TOKEN --scope hiddentao",
-    "now-build": "npm run build"
+    "publish": "npm run build && "
   },
   "repository": {
     "type": "git",
