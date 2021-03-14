@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 import Icon from './icon'
+import NavLink from './navLink'
 
 const SocialList = styled.ul`
   list-style: none;
@@ -33,9 +34,10 @@ const Text = ({ children, noText }) => {
 }
 
 export const AboutLink = () => (
-  <a href='https://hiddentao.com' title='My personal website'>
-    About <Icon name={['fas', 'external-link-alt']} />
-  </a>
+  <NavLink navLink={{
+    path: 'https://hiddentao.com',
+    label: 'Personal',
+  }} title='My personal website' />
 )
 
 export const TwitterLink = ({ children, noText }) => (
@@ -70,7 +72,7 @@ export const EmailLink = ({ children, noText }) => (
 )
 
 export const FeedLink = ({ children, noText }) => (
-  <a href="http://feedpress.me/hiddentao">
+  <a href="http://feedpress.me/hiddentao.vc">
     {children || (
       <SocialLink title='RSS'>
         <Icon name={['fas', 'rss']} /><Text noText={noText}>RSS</Text>

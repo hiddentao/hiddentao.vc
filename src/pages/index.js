@@ -9,7 +9,6 @@ import Icon from "../components/icon"
 import SEO from "../components/seo"
 import MaxContentWidth from "../components/maxContentWidth"
 import PostList from "../components/postList"
-import { TwitterLink, AngelListLink, EmailLink, AboutLink } from '../components/links'
 import { getResolvedVersionForLanguage } from '../utils/node'
 import { parseDate } from '../utils/date'
 
@@ -32,34 +31,6 @@ const SplashTop = styled.div`
   ${flex({ direction: 'row', justify: 'center', align: 'center' })};
 `
 
-const SplashBottom = styled.div`
-  ${flex({ direction: 'row', justify: 'center', align: 'center', wrap: 'wrap' })};
-  margin-top: 2rem;
-  text-align: center;
-  max-width: 80%;
-
-  ${({ theme }) => childAnchors(theme.splash.anchor)};
-
-  a {
-    ${flex({ direction: 'row', justify: 'center', align: 'center', basis: 0 })};
-    font-size: 1.4rem;
-    margin: 1rem;
-    text-transform: lowercase;
-
-    & > svg {
-      color: ${({ theme }) => theme.splash.anchor.anchorColor};
-      font-size: 70%;
-      margin: 0 0.5em;
-    }
-  }
-
-  ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
-    a {
-      margin: 0.5rem 2rem;
-    }
-  }
-`
-
 const SplashText = styled.h1`
   ${({ theme }) => theme.font('header', 'bold')};
   font-size: 2rem;
@@ -70,9 +41,16 @@ const SplashText = styled.h1`
 `
 
 const Posts = styled.div`
-  h2 {
+  & > h2 {
     font-size: 1.2rem;
+    margin-top: 0;
   }  
+
+  & > p {
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+  }
 
   ${({ theme }) => theme.media.when({ minW: 'desktop' })} {
     max-width: 600px;
@@ -115,6 +93,7 @@ const Category = styled.div`
 
 const Name = styled.div`
   margin: 0.7rem 0;
+  ${({ theme }) => childAnchors(theme.investments.anchor)};
 `
 
 const Page = ({ lang }) => {
@@ -190,13 +169,6 @@ const Page = ({ lang }) => {
               I am a London-based investor with a focus on <em>early-stage</em> startups and <em>blockchain</em>.
             </SplashText>
           </SplashTop>
-          <SplashBottom>
-            <Link to='/blog' title='Investment thoughts'>Blog</Link>
-            <AboutLink />
-            <AngelListLink noText={true} />
-            <TwitterLink noText={true} />
-            <EmailLink noText={true} />
-          </SplashBottom>
         </Splash>
         <Investments>
           {years.map(year => (
@@ -227,6 +199,9 @@ const Page = ({ lang }) => {
         <Posts>
           <h2>Latest thoughts</h2>
           <StyledPostList posts={posts} />
+          <p>
+            <Link to='/blog'>More...</Link>
+          </p>
         </Posts>
       </Content>
     </Layout>

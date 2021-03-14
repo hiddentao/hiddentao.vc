@@ -102,6 +102,13 @@ export default {
     category: {
       textColor: blueNcs,
     },
+    anchor: {
+      textColor,
+      hoverTextColor: white,
+      hoverBgColor: anchorColor,
+      borderColor: transparent,
+      hoverBorderColor: anchorColor,
+    },
   },
   contentSection: {
     bgColor: transparent,

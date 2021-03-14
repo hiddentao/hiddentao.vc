@@ -8,6 +8,7 @@ import { parseDate } from "../utils/date"
 import Layout from "../components/layout"
 import PostList from "../components/postList"
 import SEO from "../components/seo"
+import { FeedLink } from '../components/links'
 
 const YearContainer = styled.div`
   h3 {
@@ -19,6 +20,13 @@ const YearContainer = styled.div`
 
 const StyledPostList = styled(PostList)`
   font-size: 1.3rem;
+`
+
+const Title = styled.h1`
+  a {
+    font-size: 80%;
+    margin-left: 0.2em;
+  }
 `
 
 const Page = ({ intl, lang, data }) => {
@@ -59,7 +67,7 @@ const Page = ({ intl, lang, data }) => {
   return (
     <Layout>
       <SEO title='Blog' />
-      <h1>Blog</h1>
+      <Title>Blog <FeedLink noText={true} /></Title>
       {postsByYear.map(( { year, posts }) => (
         <YearContainer key={year}>
           <StyledPostList posts={posts} />

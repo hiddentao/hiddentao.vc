@@ -6,6 +6,8 @@ import { childAnchors, buttonStyles, boxShadow, flex } from 'emotion-styled-util
 
 import Button from './button'
 import Icon from './icon'
+import NavLink from './navLink'
+import { AngelListLink, TwitterLink } from "./links"
 
 const Container = styled.header`
   padding: 0.5rem 1.2rem;
@@ -114,11 +116,22 @@ const NavLinks = ({ children: links, Component }) => (
     {({ location }) => (
       links.map(navLink => (
         <Component key={navLink.label} selected={_isViewingUrl(location, navLink.regexTest)}>
-          <Link to={navLink.path}>{navLink.label}</Link>
+          <NavLink navLink={navLink} />
         </Component>
       ))
     )}
   </Location>
+)
+
+const SocialLinks = ({ Component }) => (
+  <React.Fragment>
+    <Component>
+      <AngelListLink noText={true} />
+    </Component>
+    <Component>
+      <TwitterLink noText={true} />
+    </Component>
+  </React.Fragment>
 )
 
 const Header = ({ navLinks, ...props }) => {
@@ -137,6 +150,7 @@ const Header = ({ navLinks, ...props }) => {
       </Brand>
       <Nav>
         <NavLinks Component={NavItem}>{navLinks}</NavLinks>
+        <SocialLinks Component={NavItem} />
       </Nav>
       <MobileNavButton onClick={toggleMobileMenu} open={mobileMenuOpen}>
         <Icon name={['fas', 'bars']} />
@@ -144,6 +158,7 @@ const Header = ({ navLinks, ...props }) => {
       {mobileMenuOpen ? (
         <MobileNav>
           <NavLinks Component={MobileNavItem}>{navLinks}</NavLinks>
+          <SocialLinks Component={NavItem} />
         </MobileNav>
       ) : null}
     </Container>

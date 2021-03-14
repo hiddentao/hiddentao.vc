@@ -96,7 +96,14 @@ const Layout = ({ children, noHeader }) => {
     {
       regexTest: /blog$/,
       label: 'Blog',
-      path: '/blog'
+      path: '/blog',
+      title: 'Investment thoughts',
+    },
+    {
+      regexTest: /personal$/,
+      label: 'Personal',
+      path: 'https://hiddentao.com',
+      title: 'My personal website',
     },
   ], [ data ])
 
