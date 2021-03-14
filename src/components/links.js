@@ -61,16 +61,6 @@ export const AngelListLink = ({ children, noText }) => (
   </a>
 )
 
-export const EmailLink = ({ children, noText }) => (
-  <a href="mailto:ram@hiddentao.com">
-    {children || (
-      <SocialLink title='Email'>
-        <Icon name={['fas', 'envelope']} /><Text noText={noText}>Email</Text>
-      </SocialLink>
-    )}
-  </a>
-)
-
 export const FeedLink = ({ children, noText }) => (
   <a href="http://feedpress.me/hiddentao.vc">
     {children || (
@@ -89,9 +79,6 @@ const SocialLinks = ({ className, ...props }) => {
       </SocialListItem>
       <SocialListItem>
         <TwitterLink {...props} />
-      </SocialListItem>
-      <SocialListItem>
-        <EmailLink {...props} />
       </SocialListItem>
       <SocialListItem>
         <FeedLink {...props} />
