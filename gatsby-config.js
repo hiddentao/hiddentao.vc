@@ -7,7 +7,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://hiddentao.vc',
     title: `Hiddentao Ventures`,
-    description: `Hiddentao Ventures invests in the technology sector, with a focus on early-stage startups and blockchain.`,
+    description: `We invest in the technology sector, with a focus on early-stage startups and blockchain.`,
     author: `@hiddentao`,
     defaultLanguage,
     supportedLanguages,
