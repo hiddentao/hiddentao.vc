@@ -65,7 +65,7 @@
     "start": "npm run dev",
     "serve": "gatsby serve",
     "ping-google": "curl http://www.google.com/ping?sitemap=https://hiddentao.vc/sitemap.xml",
-    "publish": "npm run build && "
+    "publish": "npm run build && npm run ping-google"
   },
   "repository": {
     "type": "git",
