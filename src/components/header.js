@@ -158,7 +158,7 @@ const Header = ({ navLinks, ...props }) => {
       {mobileMenuOpen ? (
         <MobileNav>
           <NavLinks Component={MobileNavItem}>{navLinks}</NavLinks>
-          <SocialLinks Component={NavItem} />
+          <SocialLinks Component={MobileNavItem} />
         </MobileNav>
       ) : null}
     </Container>
