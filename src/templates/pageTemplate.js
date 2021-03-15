@@ -40,10 +40,6 @@ const StyledLanguage = styled(Language)`
 
 const Comments = styled.div`
   margin-top: 4.5rem;
-
-  h2 {
-    font-size: 1.2rem;
-  }
 `
 
 const BottomNav = styled.div`
@@ -131,7 +127,6 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
       {type === 'blog' ? <PageBottomNav {...nav} /> : null}
       {type === 'blog' ? (
         <Comments>
-          <h2>Comments</h2>
           <Location>
             {({ location }) => (
               <Disqus

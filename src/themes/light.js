@@ -63,10 +63,10 @@ export default {
       mobileButton: {
         bgColor: transparent,
         textColor: black,
-        borderColor: black,
+        borderColor: transparent,
         hoverBgColor: transparent,
         hoverTextColor: black,
-        hoverBorderColor: transparent,
+        hoverBorderColor: black,
         shadowColor,
       },
     },
