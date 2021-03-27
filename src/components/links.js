@@ -75,10 +75,10 @@ const SocialLinks = ({ className, ...props }) => {
   return (
     <SocialList className={className}>
       <SocialListItem>
-        <AngelListLink {...props} />
+        <TwitterLink {...props} />
       </SocialListItem>
       <SocialListItem>
-        <TwitterLink {...props} />
+        <AngelListLink {...props} />
       </SocialListItem>
       <SocialListItem>
         <FeedLink {...props} />

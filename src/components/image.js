@@ -4,6 +4,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import BgImg from 'gatsby-background-image'
 
+import SvgImage from './svgImage'
+
 const Image = ({ src, bg, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -25,6 +27,12 @@ const Image = ({ src, bg, ...props }) => {
     data.allFile.nodes.find(({ relativePath }) => src === relativePath)
   ), [ data, src ])
 
+  if (src.endsWith('.svg')) {
+    return (
+      <SvgImage src={src} {...props} />
+    )
+  }
+
   const fluid = safeGet(match, 'childImageSharp.fluid')
 
   if (fluid) {
@@ -37,7 +45,7 @@ const Image = ({ src, bg, ...props }) => {
       <Img
         fluid={fluid}
         style={{
-          maxWidth: fluid.presentationWidth,
+          maxWidth: '100px',
           margin: "0 auto",
         }}
         Tag='div'

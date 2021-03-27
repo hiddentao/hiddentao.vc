@@ -2,15 +2,19 @@ import React, { useState, useEffect, useMemo, useCallback } from "react"
 import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from 'emotion-theming'
-import Headroom from 'react-headroom'
-import { flex, loadFonts, boxShadow } from 'emotion-styled-utils'
+import Sidebar from "react-sidebar"
+import { flex, childAnchors, loadFonts, buttonStyles } from 'emotion-styled-utils'
+import { useMediaQuery } from '@react-hook/media-query'
+
 
 import { setupThemes } from '../themes'
 import GlobalStyles from './globalStyles'
-import Header from "./header"
+import SocialLinks from './links'
+import { NavLinks, NavLink } from "./navLink"
 import Image from "./image"
-import MaxContentWidth from "./maxContentWidth"
-import Footer from "./footer"
+import Button from "./button"
+import Icon from "./icon"
+import RamImage from "./ramImage"
 
 const themes = setupThemes({
   width: {
@@ -22,35 +26,97 @@ const themes = setupThemes({
   }
 })
 
-const Container = styled(Image)`
-  color: ${({ theme }) => theme.textColor};
+const SidebarButton = styled(Button)`
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  padding: 0.2em;
+
+  ${({ theme, disabled: inDisabledState }) => buttonStyles({
+    ...theme.sidebar.menuButton,
+    inDisabledState,
+  })}
 `
 
-const HeaderWrapper = styled.div`
-  transition: all 0.3s linear;
-  background: ${ ({ floating, theme }) => (floating ? theme.header.floating.wrapper.bgColor : theme.header.wrapper.bgColor) };
-  ${({ theme, floating }) => floating ? boxShadow({ color: theme.header.floating.wrapper.shadowColor }) : ''};
-  ${({ floating, noStaticHeader }) => (noStaticHeader && !floating) ? `
-    opacity: 0;
-    pointer-events: none;
-  ` : ``};
+const sidebarWidth = 180
+
+const SidebarDiv = styled(Image)`
+  height: 100%;
+  width: ${sidebarWidth}px;
+  color: ${({ theme }) => theme.sidebar.textColor};
+  padding: 2rem;
+  text-align: center;
+  ${flex({ direction: 'column', justify: 'flex-start', align: 'center' })};
+
+  ${({ theme }) => childAnchors(theme.sidebar.anchor)};
+
+  a {
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    
+  }
 `
 
-const Content = styled(MaxContentWidth)`
-  padding: 2rem 1rem 3rem;
-  position: relative;
+const Main = styled.main`
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 2rem 3rem;
+  background-color: ${({ theme }) => theme.main.bgColor};
+  color: ${({ theme }) => theme.main.textColor};
 `
 
-const Layout = ({ children, noHeader }) => {
-  const [floatingHeader, setFloatingHeader] = useState(false)
+const StyledNavLinks = styled(NavLinks)`
+  margin: 1.5rem 0 0;
+`
 
-  const onHeaderFloat = useCallback(() => {
-    setFloatingHeader(true)
-  }, [])
+const NavLinkItem = styled.div`
+  margin: 0 0 1em;
+`
 
-  const onHeaderUnfloat = useCallback(() => {
-    setFloatingHeader(false)
-  }, [])
+const PersonalLink = styled(NavLink)`
+`
+
+const StyledSocialLinks = styled(SocialLinks)`
+  ${flex({ direction: 'row', justify: 'center', align: 'center', basis: 0 })};
+  position: absolute;
+  bottom: 8rem;
+
+  ${({ theme }) => theme.media.when({ minW: 'mobile' })} {
+    bottom: 2rem;
+  }
+  
+  li {
+    display: inline-block;
+    font-size: 0.4rem;
+    margin: 0 1em;
+
+    ${({ theme }) => childAnchors(theme.sidebar.social.anchor)};
+
+    a {
+      display: block;
+      height: 2em;
+      width: 2em;
+      border-radius: 40px;
+      ${flex({ direction: 'column', justify: 'center', align: 'center' })};
+
+      span {
+        display: block;
+      }
+
+      svg {
+        color: ${({ theme }) => theme.sidebar.social.anchor.textColor};
+      }
+    }
+  }
+`
+
+const Layout = ({ children }) => {
+  const sidebarDocked = useMediaQuery('(min-width: 750px)')
+  const [ showSidebar, setShowSidebar ] = useState(false)
+
+  const toggleSidebar = useCallback(() => {
+    setShowSidebar(!showSidebar)
+  }, [ showSidebar ])
 
   const [ , forceUpdate ] = useState()
 
@@ -94,44 +160,61 @@ const Layout = ({ children, noHeader }) => {
 
   const navLinks = useMemo(() => [
     {
-      regexTest: /blog$/,
-      label: 'Blog',
-      path: '/blog',
-      title: 'Investment thoughts',
+      regexTest: /.?/,
+      label: 'Portfolio',
+      path: '/',
+      title: 'Portfolio',
     },
-    {
-      regexTest: /personal$/,
-      label: 'Personal',
-      path: 'https://hiddentao.com',
-      title: 'My personal website',
-    },
+    // {
+    //   regexTest: /blog$/,
+    //   label: 'Writings',
+    //   path: '/blog',
+    //   title: 'Investment thoughts',
+    // },
   ], [ data ])
+
+
+  const personalLink = {
+    regexTest: /personal$/,
+    label: 'Personal',
+    path: 'https://hiddentao.com',
+    title: 'Personal website',
+  }
 
   return (
     <ThemeProvider theme={themes.get('default')}>
       <GlobalStyles />
-      <Container bg={true} src='bg.png' style={{
-        backgroundPosition: 'auto',
-        backgroundColor: '#fffbe9',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'repeat',
-        backgroundSize: 'auto',
-        minHeight: '100vh',
-      }}>
-        <Headroom onPin={onHeaderFloat} onUnfix={onHeaderUnfloat}>
-          <HeaderWrapper floating={floatingHeader} noStaticHeader={noHeader}>
-            <MaxContentWidth>
-              <Header navLinks={navLinks} />
-            </MaxContentWidth>
-          </HeaderWrapper>
-        </Headroom>
-        <Content>
+      <Sidebar
+        defaultSidebarWidth={sidebarWidth}
+        docked={sidebarDocked}
+        open={showSidebar}
+        onSetOpen={toggleSidebar}
+        touch={false}
+        sidebar={(
+          <SidebarDiv bg={true} src='bg.png' style={{
+            backgroundPosition: 'auto',
+            backgroundColor: '#fffbe9',
+            backgroundAttachment: 'fixed',
+            backgroundRepeat: 'repeat',
+            backgroundSize: 'auto',
+          }}>
+            <div>
+              <RamImage size={100} />
+              <StyledNavLinks
+                navLinks={navLinks}
+                Component={NavLinkItem}
+              />
+              <PersonalLink navLink={personalLink} />
+            </div>
+            <StyledSocialLinks noText={true} />
+          </SidebarDiv>
+        )}
+      >
+        <Main>
+          <SidebarButton onClick={toggleSidebar}>&#9655;</SidebarButton>
           {children}
-        </Content>
-        <MaxContentWidth>
-          <Footer navLinks={navLinks} />
-        </MaxContentWidth>
-      </Container>
+        </Main>
+      </Sidebar>
     </ThemeProvider>
   )
 }

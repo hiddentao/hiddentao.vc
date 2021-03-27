@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { css, Global } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
-import { resetStyles, childAnchors } from 'emotion-styled-utils'
+import { resetStyles, childAnchors, smoothTransitions } from 'emotion-styled-utils'
 
 const GlobalStyles = () => {
   const theme = useTheme()
@@ -13,6 +13,7 @@ const GlobalStyles = () => {
       <Global styles={css`
         * {
           box-sizing: border-box;
+          ${smoothTransitions()};
         }
 
         html {

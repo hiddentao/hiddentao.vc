@@ -51,63 +51,52 @@ export default {
     hoverBorderColor: anchorColor,
     shadowColor,
   },
-  header: {
-    nav: {
-      anchor: {
-        textColor: black,
-        borderColor: transparent,
-        hoverTextColor: black,
-        hoverBgColor: transparent,
-        hoverBorderColor: black,
-      },
-      mobileButton: {
-        bgColor: transparent,
-        textColor: black,
-        borderColor: transparent,
-        hoverBgColor: transparent,
-        hoverTextColor: black,
-        hoverBorderColor: black,
-        shadowColor,
-      },
-    },
-    mobileNav: {
-      bgColor: orangeYellowCrayola,
-      hoverBgColor: Color(orangeYellowCrayola).darken(0.2).hex(),
-      borderColor: Color(orangeYellowCrayola).lighten(0.2).hex(),
-      shadowColor,
-    },
-    floating: {
-      wrapper: {
-        bgColor: opacify(orangeYellowCrayola, 0.9),
-        shadowColor,
-      },
-    },
-    wrapper: {
-      bgColor: opacify(orangeYellowCrayola, 0),
-    },
+  ramImage: {
+    shadowColor,
   },
-  splash: {
+  sidebar: {
+    bgColor: 'transparent',
+    textColor: white,
     anchor: {
-      textColor: anchorColor,
+      textColor: white,
       hoverTextColor: anchorColor,
+      borderColor: transparent,
       hoverBgColor: transparent,
       borderColor: transparent,
       hoverBorderColor: anchorColor,
     },
+    social: {
+      anchor: {
+        textColor: black,
+        bgColor: white,
+        borderColor: transparent,
+        hoverTextColor: black,
+        hoverBgColor: anchorColor,
+        hoverBorderColor: anchorColor,
+      },
+    },
+    menuButton: {
+      bgColor: transparent,
+      textColor: grey,
+      borderColor: transparent,
+      hoverBgColor: transparent,
+      hoverTextColor: grey,
+      hoverBorderColor: transparent,
+      shadowColor,
+    },
+  },
+  main: {
+    bgColor: white,
+    textColor: black,
   },
   investments: {
     year: {
-      textColor: black,
-    },
-    category: {
-      textColor: blueNcs,
+      textColor: lightGrey,
     },
     anchor: {
-      textColor,
-      hoverTextColor: white,
-      hoverBgColor: anchorColor,
-      borderColor: transparent,
-      hoverBorderColor: anchorColor,
+      borderColor: lightGrey,
+      hoverBorderColor: transparent,
+      hoverShadowColor: shadowColor,
     },
   },
   contentSection: {

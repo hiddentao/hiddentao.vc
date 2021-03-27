@@ -11,3 +11,6 @@ export const calculateReadTimeInMinutes = markdown => {
 export const stripMarkdown = str => {
   return remark().use(strip).processSync(str).contents
 }
+
+
+export const isViewingUrl = (location, regex) => !!location.pathname.match(regex)
