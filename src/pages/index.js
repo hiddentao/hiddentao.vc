@@ -79,7 +79,7 @@ const InvImage = styled(Image)`
 `
 
 const Page = ({ lang }) => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`    
     fragment MarkdownPageFields on MarkdownPage {
       path
       type
@@ -148,7 +148,7 @@ const Page = ({ lang }) => {
       <SEO />
       <Content>
         <Intro>
-          I am a London-based investor focusing on <em>cryptocurrency</em> and <em>early-stage</em> startups.
+          London-based investor focusing on <em>cryptocurrency</em> and <em>early-stage</em> startups.
         </Intro>
         <YearList>
           {years.map(year => (
