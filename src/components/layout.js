@@ -4,9 +4,9 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from 'emotion-theming'
 import Sidebar from "react-sidebar"
 import { flex, childAnchors, loadFonts, buttonStyles } from 'emotion-styled-utils'
-import { useMediaQuery } from '@react-hook/media-query'
 
 
+import { useMediaQuery} from '../hooks/media'
 import { setupThemes } from '../themes'
 import GlobalStyles from './globalStyles'
 import SocialLinks from './links'
@@ -111,7 +111,7 @@ const StyledSocialLinks = styled(SocialLinks)`
 `
 
 const Layout = ({ children }) => {
-  const sidebarDocked = useMediaQuery('(min-width: 750px)')
+  const sidebarDocked = useMediaQuery('only screen and (min-width: 750px)')
   const [ showSidebar, setShowSidebar ] = useState(false)
 
   const toggleSidebar = useCallback(() => {

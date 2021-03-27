@@ -80,11 +80,13 @@ const SocialLinks = ({ className, ...props }) => {
       <SocialListItem>
         <AngelListLink {...props} />
       </SocialListItem>
-      <SocialListItem>
-        <FeedLink {...props} />
-      </SocialListItem>
     </SocialList>
   )
+
+  // < SocialListItem >
+  //   <FeedLink {...props} />
+  // </SocialListItem >
+
 }
 
 export default SocialLinks
