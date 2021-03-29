@@ -65,6 +65,13 @@ const angellist = [
     stage: 'seed',
     img: 'appbind.png',
   },
+  {
+    name: 'Disco',
+    profile: 'https://letsdisco.com/',
+    date: '2021-03-01',
+    stage: 'seed',
+    img: 'disco.svg',
+  },
 ].map(v => { v.platform = 'angel.co'; return v })
 
 const crypto = [
