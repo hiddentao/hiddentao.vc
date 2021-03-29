@@ -72,6 +72,14 @@ const angellist = [
     stage: 'seed',
     img: 'disco.svg',
   },
+  {
+    name: 'LVL',
+    profile: 'https://angel.co/company/bankwithlvl',
+    date: '2021-03-29',
+    stage: 'series-a',
+    category: 'blockchain',
+    img: 'lvl.png',
+  },
 ].map(v => { v.platform = 'angel.co'; return v })
 
 const crypto = [
@@ -110,11 +118,18 @@ const crypto = [
     stage: 'market',
     img: 'terravirtua.png',
   },
-].map(v => { v.platform = 'crypto'; return v })
+].map(v => { 
+  v.platform = 'crypto'; 
+  v.category = 'blockchain';
+  return v
+ })
 
 module.exports = [].concat(
   private,
   angellist,
   crowdcube,
   crypto,
-)
+).map(a => {
+  a.category = a.category || 'tech'
+  return a
+})

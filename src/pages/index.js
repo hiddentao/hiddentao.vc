@@ -29,7 +29,10 @@ const Intro = styled.div`
 
 const YearList = styled.ul`
   display: block;
-  margin: 0 0 2rem;
+
+  & > li {
+    margin-bottom: 2rem;
+  }
 `
 
 const Year = styled.div`
@@ -41,18 +44,20 @@ const Year = styled.div`
 
 const List = styled.ul`
   ${flex({ direction: 'row', justify: 'flex-start', align: 'flex-start', wrap: 'wrap' })};
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   font-size: 0.9em;
 `
 
 const Inv = styled.li`
   display: block;
   margin: 0 1rem 1rem 0;
+  width: ${({ cat }) => cat === 'blockchain' ? '150px' : '100px'};
+  height: ${({ cat }) => cat === 'blockchain' ? '150px' : '100px'};
 `
 
 const InvAnchor = styled.a`
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   ${flex({ direction: 'column', justify: 'center', align: 'center' })};
 
   &, &:link, &:visited {
@@ -68,8 +73,8 @@ const InvAnchor = styled.a`
 `
 
 const InvImageContainer = styled.div`
-  width: 100px;
-  max-height: 100px;
+  width: 75%;
+  max-height: 75%;
   background-color: ${({ bgColor }) => bgColor || 'transparent'};
 `
 
@@ -98,6 +103,7 @@ const Page = ({ lang }) => {
       profile
       date
       platform
+      category
       img
       imgBg
     }
@@ -131,9 +137,9 @@ const Page = ({ lang }) => {
       const d = parseDate(v.date)
       d.year = (d.year < 2021) ? '2014-2020' : `${d.year}`
       m[d.year] = m[d.year] || {}
-      catKeys[v.platform] = true
-      m[d.year][v.platform] = m[d.year][v.platform] || []
-      m[d.year][v.platform].push(v)
+      catKeys[v.category] = true
+      m[d.year][v.category] = m[d.year][v.category] || []
+      m[d.year][v.category].push(v)
       return m
     }, {})
 
@@ -154,24 +160,26 @@ const Page = ({ lang }) => {
           {years.map(year => (
             <li key={year}>
               <Year>{year}</Year>
-              <List>
-                {categories.map(cat => {
-                  const rows = investments[year][cat]
-                  if (rows && rows.length) {
-                    return rows.map(row => (
-                      <Inv key={row.name}>
-                        <InvAnchor href={row.profile} title={row.name}>
-                          <InvImageContainer bgColor={row.imgBg}>
-                            <InvImage src={row.img} />
-                          </InvImageContainer>
-                        </InvAnchor>
-                      </Inv>
-                    ))
-                  } else {
-                    return null
-                  }
-                })}
-              </List>
+              {categories.map(cat => {
+                const rows = investments[year][cat]
+                if (rows && rows.length) {
+                  return (
+                    <List key={cat}>
+                      {rows.map(row => (
+                        <Inv key={row.name} cat={cat}>
+                          <InvAnchor href={row.profile} title={row.name}>
+                            <InvImageContainer bgColor={row.imgBg}>
+                              <InvImage src={row.img} />
+                            </InvImageContainer>
+                          </InvAnchor>
+                        </Inv>
+                      ))}
+                    </List>
+                  )
+                } else {
+                  return null
+                }
+              })}
             </li>
           ))}
         </YearList>
