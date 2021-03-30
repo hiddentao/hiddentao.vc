@@ -66,6 +66,13 @@ const angellist = [
     img: 'appbind.png',
   },
   {
+    name: 'Statusphere',
+    profile: 'https://angel.co/company/statusphere',
+    date: '2021-03-01',
+    stage: 'seed',
+    img: 'statusphere.jpeg',
+  },
+  {
     name: 'Disco',
     profile: 'https://letsdisco.com/',
     date: '2021-03-01',
