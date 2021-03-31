@@ -96,11 +96,13 @@ const StyledSocialLinks = styled(SocialLinks)`
       display: block;
       height: 2em;
       width: 2em;
+      font-size: 1rem;
       border-radius: 40px;
       ${flex({ direction: 'column', justify: 'center', align: 'center' })};
 
       span {
         display: block;
+        margin: 0;
       }
 
       svg {
@@ -165,12 +167,12 @@ const Layout = ({ children }) => {
       path: '/',
       title: 'Portfolio',
     },
-    // {
-    //   regexTest: /blog$/,
-    //   label: 'Writings',
-    //   path: '/blog',
-    //   title: 'Investment thoughts',
-    // },
+    {
+      regexTest: /blog$/,
+      label: 'Writings',
+      path: '/blog',
+      title: 'Investment thoughts',
+    },
   ], [ data ])
 
 

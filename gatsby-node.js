@@ -121,10 +121,12 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest, getNodes })
         title = node.title
         pageId = node.slug
         date = formatDate(node.date, 'YYYY-MM-DD'),
-        draft = false
+        draft = !node.published
         slug = _generatePagePath({ pageType, pageId, date })
 
-        _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        if (!draft) {
+          _createSitemapNode({ ...sitemapNodeCallProps, slug, lang, pageType })
+        }
 
         versions.push({
           lang,
@@ -244,7 +246,7 @@ exports.createPages = async ({ actions, graphql, getNode }) => {
   // them know where they sit in the chain
   const { data: { allMarkdownPage: { nodes: blogPages } } } = await _graphql(`
     {
-      allMarkdownPage(filter: { type: { eq: "blog" }, draft: { ne: true } }, sort: { order:DESC, fields: date }) {
+      allMarkdownPage(filter: { type: { eq: "blog" } }, sort: { order:DESC, fields: date }) {
         nodes {
           id
         }

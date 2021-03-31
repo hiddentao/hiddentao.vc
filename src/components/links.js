@@ -71,6 +71,16 @@ export const FeedLink = ({ children, noText }) => (
   </a>
 )
 
+export const EmailLink = ({ children, noText }) => (
+  <a href="mailto:ram@hiddentao.com">
+    {children || (
+      <SocialLink title='Email'>
+        <Icon name={['fas', 'envelope']} /><Text noText={noText}>Email</Text>
+      </SocialLink>
+    )}
+  </a>
+)
+
 const SocialLinks = ({ className, ...props }) => {
   return (
     <SocialList className={className}>
@@ -79,6 +89,9 @@ const SocialLinks = ({ className, ...props }) => {
       </SocialListItem>
       <SocialListItem>
         <AngelListLink {...props} />
+      </SocialListItem>
+      <SocialListItem>
+        <EmailLink {...props} />
       </SocialListItem>
     </SocialList>
   )

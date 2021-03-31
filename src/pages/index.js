@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link, IntlContextConsumer } from 'gatsby-plugin-intl'
-import { flex, childAnchors, boxShadow } from 'emotion-styled-utils'
+import { flex, childAnchors, boxShadow, smoothTransitions } from 'emotion-styled-utils'
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -56,6 +56,8 @@ const Inv = styled.li`
 `
 
 const InvAnchor = styled.a`
+  ${smoothTransitions()};
+
   width: 100%;
   height: 100%;
   ${flex({ direction: 'column', justify: 'center', align: 'center' })};
