@@ -119,7 +119,7 @@ const Page = ({ siteUrl, currentLanguage, current, ...nav }) => {
     <Layout>
       <SEO title={fields.title} description={summary} />
       <Heading>{fields.title}</Heading>
-      <StyledPageLastUpdatedDate date={fields.date} showOldDateWarning={type === 'blog'} />
+      <StyledPageLastUpdatedDate date={fields.date} />
       {versions.length > 1 ? (
         <StyledLanguage availableLanguages={versions.map(v => v.lang)} />
       ) : null}

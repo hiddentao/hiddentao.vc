@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby-plugin-intl'
 import styled from '@emotion/styled'
-import { flex } from 'emotion-styled-utils'
 
 import { formatDate } from "../utils/date"
 
