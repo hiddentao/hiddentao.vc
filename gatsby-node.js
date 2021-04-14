@@ -42,7 +42,7 @@ const _loadMarkdownFile = n => grayMatter(fs.readFileSync(n.absolutePath, 'utf-8
 const _generatePagePath = ({ pageType, pageId, date }) => {
   if ('blog' === pageType) {
     const [ year, month, day ] = date.split('-')
-    return `/archives/${year}/${month}/${day}/${pageId}`
+    return `/blog/${year}/${month}/${day}/${pageId}`
   } else {
     return `/${pageId}`
   }

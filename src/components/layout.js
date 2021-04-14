@@ -70,7 +70,7 @@ const StyledNavLinks = styled(NavLinks)`
 `
 
 const NavLinkItem = styled.div`
-  margin: 0 0 1em;
+  margin: 0 0 2em;
 `
 
 const PersonalLink = styled(NavLink)`
@@ -169,7 +169,7 @@ const Layout = ({ children }) => {
     },
     {
       regexTest: /blog$/,
-      label: 'Writings',
+      label: 'Thoughts',
       path: '/blog',
       title: 'Investment thoughts',
     },
