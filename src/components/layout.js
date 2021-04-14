@@ -114,7 +114,7 @@ const StyledSocialLinks = styled(SocialLinks)`
 `
 
 const Layout = ({ children }) => {
-  const sidebarDocked = useMediaQuery('only screen and (min-width: 750px)')
+  const sidebarDocked = useMediaQuery('only screen and (min-width: 750px)', true)
   const [ showSidebar, setShowSidebar ] = useState(false)
 
   const toggleSidebar = useCallback(() => {
