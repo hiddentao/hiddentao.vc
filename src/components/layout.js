@@ -60,6 +60,7 @@ const SidebarDiv = styled(Image)`
 const Main = styled.main`
   width: 100%;
   min-height: 100vh;
+  max-width: 1024px;
   padding: 2rem 2rem 3rem;
   background-color: ${({ theme }) => theme.main.bgColor};
   color: ${({ theme }) => theme.main.textColor};
