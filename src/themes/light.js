@@ -152,5 +152,9 @@ export default {
   code: {
     bgColor: opacify(orangeYellowCrayola, 0.5),
   },
+  blockquote: {
+    textColor: darkestGrey,
+    bgColor: opacify(lightGrey, 0.5),
+  }
 }
 
