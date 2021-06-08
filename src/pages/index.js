@@ -156,7 +156,7 @@ const Page = ({ lang }) => {
       <SEO />
       <Content>
         <Intro>
-          London-based investor focusing on <em>cryptocurrency</em> and <em>early-stage</em> startups.
+          Early-stage investor focused on <em>blockchain</em> and <em>impactful</em> tech.
         </Intro>
         <YearList>
           {years.map(year => (
